@@ -1,5 +1,5 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+name: Run Python Test Script
+run-name: ${{ github.actor }} is testing out calling a Python script using GitHub Actions 🚀
 on: [push]
 jobs:
   Explore-GitHub-Actions:
@@ -15,4 +15,7 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+      - name: Run python script.
+        run: |
+          ./python_test_script.py
       - run: echo "🍏 This job's status is ${{ job.status }}."
