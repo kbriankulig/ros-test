@@ -7,7 +7,7 @@ jobs:
     container:
       image: ros:noetic
       volumes:
-        - test_ws:/test_ws
+        - ${{ github.workspace }}:/root
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
@@ -21,11 +21,11 @@ jobs:
 #          ls ${{ github.workspace }}
       - name: List files in the noetic container
         run: |
-          ls /test_ws/devel
+          ls /root
       - name: Run python script.
         run: |
           ./python_test_script.py
       - name: Run devel setup
         run: |
-          /test_ws/devel/setup.bash
+          /root/test_ws/devel/setup.bash
       - run: echo "🍏 This job's status is ${{ job.status }}."
