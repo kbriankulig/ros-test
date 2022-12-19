@@ -25,10 +25,7 @@ jobs:
       - name: Run python script.
         run: |
           ./python_test_script.py
-      - name: Run ros setup
-        run: |
-          /opt/ros/noetic/setup.bash
       - name: Run devel setup
         run: |
-          source /root/test_ws/devel/setup.bash
+          ./root/test_ws/devel/setup.bash
       - run: echo "🍏 This job's status is ${{ job.status }}."
