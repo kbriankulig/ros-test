@@ -38,9 +38,9 @@
 
 import rospy
 from std_msgs.msg import String
-countdown_10sec = 100
 
 def talker():
+    countdown_10sec = 100
     pub = rospy.Publisher('chatter', String, queue_size=10)
     rospy.init_node('talker', anonymous=True)
     rate = rospy.Rate(10) # 10hz
@@ -50,7 +50,6 @@ def talker():
         pub.publish(hello_str)
         rate.sleep()
         countdown_10sec = countdown_10sec - 1
-    rospy.signal_shutdown("10 second test is over")
 
 if __name__ == '__main__':
     try:

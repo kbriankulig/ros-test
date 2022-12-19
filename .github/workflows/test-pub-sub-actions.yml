@@ -33,6 +33,6 @@ jobs:
         run: |
           source /opt/ros/noetic/setup.bash
           source /root/test_ws/devel/setup.bash
-          rosrun test_pkg talker.py
+          roslaunch test_pkg /root/test_ws/src/test_pkg/launch/pub_sub.launch
         shell: bash
       - run: echo "🍏 This job's status is ${{ job.status }}."

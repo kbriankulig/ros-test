@@ -36,6 +36,7 @@
 ## Simple talker demo that listens to std_msgs/Strings published 
 ## to the 'chatter' topic
 
+import time
 import rospy
 from std_msgs.msg import String
 
@@ -53,8 +54,13 @@ def listener():
 
     rospy.Subscriber('chatter', String, callback)
 
+    countdown_10sec = 100
+    while countdown_10sec > 0:
+        time.sleep(0.1)
+        countdown_10sec = countdown_10sec - 1    
+    
     # spin() simply keeps python from exiting until this node is stopped
-    rospy.spin()
+    #rospy.spin()
 
 if __name__ == '__main__':
     listener()
