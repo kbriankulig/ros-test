@@ -21,11 +21,11 @@ jobs:
 #          ls ${{ github.workspace }}
       - name: List files in the noetic container
         run: |
-          ls /test_ws
+          ls /test_ws/devel
       - name: Run python script.
         run: |
           ./python_test_script.py
       - name: Run devel setup
         run: |
-          /root/test_ws/devel/setup.bash
+          /test_ws/devel/setup.bash
       - run: echo "🍏 This job's status is ${{ job.status }}."
