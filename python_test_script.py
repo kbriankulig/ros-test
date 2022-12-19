@@ -7,6 +7,7 @@ def callback():
     
     print("Checking Ubuntu version")
     os.system("lsb_release -a")
+    os.system("docker -v")
 
     print("Done with python script")
     
