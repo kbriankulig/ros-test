@@ -21,7 +21,7 @@ jobs:
 #          ls ${{ github.workspace }}
       - name: List files in the noetic container
         run: |
-          ls /root
+          ls -al /root/test_ws
       - name: Run python script.
         run: |
           ./python_test_script.py
