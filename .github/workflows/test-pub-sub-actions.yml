@@ -27,5 +27,5 @@ jobs:
           ./python_test_script.py
       - name: Run devel setup
         run: |
-          ./root/test_ws/devel/setup.bash
+          /root/test_ws/devel/setup.bash
       - run: echo "🍏 This job's status is ${{ job.status }}."
