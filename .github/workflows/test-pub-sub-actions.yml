@@ -4,6 +4,7 @@ on: [push]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
+    timeout-minutes: 1
     container:
       image: ros:noetic
       volumes:
