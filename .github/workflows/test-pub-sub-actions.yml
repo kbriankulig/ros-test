@@ -22,7 +22,7 @@ jobs:
       - name: List files in the noetic container
         run: |
           ls -al /root/test_ws
-          chmod +x /root/test_ws/devel/setup.bash
+          chmod +x /root/test_ws/devel/*
           ls -al /root/test_ws/devel
       - name: Run python script.
         run: |
