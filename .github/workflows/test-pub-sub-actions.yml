@@ -22,6 +22,7 @@ jobs:
       - name: List files in the noetic container
         run: |
           ls -al /root/test_ws
+          ls -al /root/test_ws/devel
       - name: Run python script.
         run: |
           ./python_test_script.py
