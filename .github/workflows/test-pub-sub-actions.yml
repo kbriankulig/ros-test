@@ -32,5 +32,5 @@ jobs:
         run: |
           /opt/ros/noetic/setup.bash
           /root/test_ws/devel/setup.bash
-          rosrun test_pkg roscore
+          roscore
       - run: echo "🍏 This job's status is ${{ job.status }}."
