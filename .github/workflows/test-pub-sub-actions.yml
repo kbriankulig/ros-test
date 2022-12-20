@@ -47,6 +47,6 @@ jobs:
 
       - name: Check overall test status.
         run: |
-          ./overall_test_status.py
+          /root/test_ws/src/test_pkg/test/overall_test_status.py
           
       - run: echo "🍏 This job's status is ${{ job.status }}."
