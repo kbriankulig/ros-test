@@ -20,19 +20,26 @@ jobs:
 #      - name: List files in the repository
 #        run: |
 #          ls ${{ github.workspace }}
-      - name: List files in the noetic container
+
+      - name: List and verify files are in the noetic container.
         run: |
-          ls -al /root/test_ws
           chmod +x /root/test_ws/devel/*
           chmod +x /opt/ros/noetic/setup.bash
+          ls -al /root/test_ws
           ls -al /root/test_ws/devel
-      - name: Run python script.
+          ls -al /root/test_ws/src/test_pkg
+          ls -al /root/test_ws/src/test_pkg/scripts
+          ls -al /root/test_ws/src/test_pkg/test
+
+      - name: Run simple python script to check python, docker, and ubuntu versions.
         run: |
           ./python_test_script.py
-      - name: Run devel setup
+
+      - name: Run pub_sub_test.
         run: |
           source /opt/ros/noetic/setup.bash
           source /root/test_ws/devel/setup.bash
-          roslaunch /root/test_ws/src/test_pkg/launch/pub_sub.launch
+#         roslaunch /root/test_ws/src/test_pkg/launch/pub_sub.launch
+          rostest /root/test_ws/src/test_pkg/test/pub_sub_test.test
         shell: bash
       - run: echo "🍏 This job's status is ${{ job.status }}."
