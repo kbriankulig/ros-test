@@ -39,6 +39,6 @@ jobs:
         run: |
           source /opt/ros/noetic/setup.bash
           source /root/test_ws/devel/setup.bash
-          rostest /root/test_ws/src/test_pkg/test/pub_sub_test.test
+          rostest test_pkg pub_sub_test.test
         shell: bash
       - run: echo "🍏 This job's status is ${{ job.status }}."
