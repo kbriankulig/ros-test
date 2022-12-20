@@ -50,7 +50,7 @@ def talker():
         pub.publish(hello_str)
         rate.sleep()
         countdown_10sec = countdown_10sec - 1
-    rospy.signal_shutdown("10 second test is over")
+    rospy.signal_shutdown("10 second timeout reached")
 
 if __name__ == '__main__':
     try:

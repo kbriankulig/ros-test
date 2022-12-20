@@ -2,8 +2,8 @@
 
 import os
 
-def callback():
-    print("Hello from python_test_script.py")
+def check_version_info():
+    print("Hello from list_sw_version_info.py")
     
     print("Checking Ubuntu version")
     os.system("lsb_release -a")
@@ -12,4 +12,4 @@ def callback():
     print("Done with python script")
     
 if __name__ == '__main__':
-    callback()
+    check_version_info()
