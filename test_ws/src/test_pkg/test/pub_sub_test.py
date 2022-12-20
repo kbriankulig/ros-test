@@ -33,7 +33,7 @@
 #
 # Revision $Id: gossipbot.py 1013 2008-05-21 01:08:56Z sfkwc $
 
-## Talker/listener demo validation 
+## Talker/listener demo validation
 
 PKG = 'test_pkg'
 NAME = 'pub_sub_test'
