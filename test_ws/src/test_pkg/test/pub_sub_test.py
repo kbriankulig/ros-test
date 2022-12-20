@@ -31,29 +31,43 @@
 # ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 #
-# Revision $Id$
+# Revision $Id: gossipbot.py 1013 2008-05-21 01:08:56Z sfkwc $
 
-## Simple talker demo that published std_msgs/Strings messages
-## to the 'chatter' topic
+## Talker/listener demo validation 
+
+PKG = 'test_pkg'
+NAME = 'pub_sub_test'
+
+import sys
+import time
 
 import rospy
-from std_msgs.msg import String
+import unittest
 
-def talker():
-    countdown_10sec = 100
-    pub = rospy.Publisher('chatter', String, queue_size=10)
-    rospy.init_node('talker', anonymous=True)
-    rate = rospy.Rate(10) # 10hz
-    while not rospy.is_shutdown() and countdown_10sec > 0:
-        hello_str = "hello world %s" % rospy.get_time()
-        rospy.loginfo(hello_str)
-        pub.publish(hello_str)
-        rate.sleep()
-        countdown_10sec = countdown_10sec - 1
-    rospy.signal_shutdown("10 second test is over")
+from std_msgs.msg import *
 
+class TestTalkerListener(unittest.TestCase):
+    def __init__(self, *args):
+        super(TestTalkerListener, self).__init__(*args)
+        self.received_talker_data = False
+        
+    def callback(self, data):
+        print(rospy.get_caller_id(), "heard: %s"%data.data)
+        self.received_talker_data = data.data and data.data.startswith('hello world')
+
+    def test_talker_listener(self):
+        rospy.init_node(NAME, anonymous=True)
+        rospy.Subscriber("chatter", String, self.callback)
+        
+        timeout_t = time.time() + 5.0 # 5 Seconds
+        while not rospy.is_shutdown() and not self.received_talker_data and time.time() < timeout_t:
+            time.sleep(0.1)
+        
+        if self.received_talker_data:
+            self.assert_(self.assertTrue)
+        else:
+            self.assert_(self.assertFalse)
+        
 if __name__ == '__main__':
-    try:
-        talker()
-    except rospy.ROSInterruptException:
-        pass
+    import rostest
+    rostest.rosrun(PKG, NAME, TestTalkerListener, sys.argv)
