@@ -25,6 +25,8 @@ jobs:
         run: |
           chmod +x /root/test_ws/devel/*
           chmod +x /opt/ros/noetic/setup.bash
+          chmod +x /root/test_ws/src/test_pkg/scripts/*.py
+          chmod +x /root/test_ws/src/test_pkg/test/*.py
           ls -al /root/test_ws
           ls -al /root/test_ws/devel
           ls -al /root/test_ws/src/test_pkg
