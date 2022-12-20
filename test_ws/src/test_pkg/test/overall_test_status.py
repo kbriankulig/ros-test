@@ -13,14 +13,14 @@ if __name__ == '__main__':
     print(system_command)
     
     result = subprocess.run([system_command], stdout=subprocess.PIPE, shell=True, executable='/bin/bash')
-    print(result.stdout)
+    print(result.stdout.decode("utf-8"))
     
     # Check if catkin_test_results contains the string "0 errors"
     if "0 errors" in result.stdout.decode("utf-8"):
         print("No errors in catkin_test_results.")
-        sys.exit(1)
+        sys.exit(0)
     else:
         print("1 or more errors in catkin_test_results.")
-        sys.exit(0)
+        sys.exit(1)
     
     
