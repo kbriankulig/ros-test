@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# This script is meant to be called from a docker running using github Actions.
+# This script is meant to be called from github Actions.
 # This script runs catkin_test_results on the output to decide if the corresponding github Action should be failed.
 # If catkin_test_results contain the string "0 errors", return a succesful system exit code of 0 for git Actions,
 # otherwise return 1.to fail the git Action.

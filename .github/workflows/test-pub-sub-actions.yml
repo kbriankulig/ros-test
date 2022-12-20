@@ -1,4 +1,4 @@
-name: Run Python Test Script
+name: Run-Pub-Sub-Test
 run-name: ${{ github.actor }} running pub_sub_test using GitHub Actions 🚀
 on: [push]
 jobs:
