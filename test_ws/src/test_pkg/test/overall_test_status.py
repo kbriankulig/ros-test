@@ -7,8 +7,9 @@
 if __name__ == '__main__':
     import subprocess
     import sys
-
-    system_command = 'source /opt/ros/noetic/setup.bash; source /root/test_ws/devel/setup.bash; catkin_test_results /root/.ros/test_results'
+    
+    # Note that "/root" is "/github/home" at the end of the system command.  Don't really understand this - kbk...
+    system_command = 'source /opt/ros/noetic/setup.bash; source /root/test_ws/devel/setup.bash; catkin_test_results /github/home/.ros/test_results'
     print(system_command)
     
     result = subprocess.run([system_command], stdout=subprocess.PIPE, shell=True, executable='/bin/bash')
