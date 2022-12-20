@@ -2,7 +2,7 @@
 
 # This script is meant to be called from github Actions.
 # This script runs catkin_test_results on the output to decide if the corresponding github Action should be failed.
-# If catkin_test_results contain the string "0 errors", return a succesful system exit code of 0 for git Actions,
+# If catkin_test_results contain the string "0 errors", return a succesful system exit code of 0 to git Actions,
 # otherwise return 1.to fail the git Action.
         
 if __name__ == '__main__':
