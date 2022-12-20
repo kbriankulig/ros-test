@@ -1,5 +1,5 @@
 <launch>
   <node name="talker" pkg="test_pkg" type="talker.py" />
-  <node name="listener" pkg="test_pkg" type="listener.py" output="screen" />  
+  <node name="listener" pkg="test_pkg" type="listener.py" output="screen" /> 
   <test test-name="pub_sub_test" pkg="test_pkg" type="pub_sub_test.py" />
 </launch>
