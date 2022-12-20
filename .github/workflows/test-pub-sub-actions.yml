@@ -43,5 +43,6 @@ jobs:
           source /root/test_ws/devel/setup.bash
           rostest test_pkg pub_sub_test.test
           catkin_test_results /root/.ros/test_results
+          catkin_test_results /github/home/.ros/test_results >> $GITHUB_ENV
         shell: bash
       - run: echo "🍏 This job's status is ${{ job.status }}."
