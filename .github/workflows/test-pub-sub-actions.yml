@@ -25,6 +25,7 @@ jobs:
           cd /root/my_ws
           catkin_make
           mv /home/my_ws/src /root/my_ws/src
+        shell: bash          
         
       - name: List and verify important files are in the noetic container.
         run: |
@@ -36,10 +37,12 @@ jobs:
           ls -al /root/my_ws/src/my_pkg
           ls -al /root/my_ws/src/my_pkg/scripts
           ls -al /root/my_ws/src/my_pkg/test
+        shell: bash          
 
       - name: Run simple python script to check python, docker, and ubuntu versions.
         run: |
           ./list_sw_version_info.py
+        shell: bash          
 
       - name: Run pub_sub_test.
         run: |
@@ -52,5 +55,6 @@ jobs:
       - name: Check overall test status.
         run: |
           /root/my_ws/src/my_pkg/test/overall_test_status.py
+        shell: bash          
           
       - run: echo "🍏 This job's status is ${{ job.status }}."
