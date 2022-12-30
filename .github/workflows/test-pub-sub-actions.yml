@@ -30,20 +30,26 @@ jobs:
         
       - name: List and verify important files are in the noetic container.
         run: |
-          chmod +x /root/my_ws/devel/*
           echo "Contents of my_ws:"
           ls -al /root/my_ws
+          
           echo "Contents of my_ws/devel/:"
+          chmod +x /root/my_ws/devel/*
           ls -al /root/my_ws/devel
+          
           echo "Contents of my_ws/src/:"
           ls -al /root/my_ws/src
+          
           echo "Contents of my_ws/src/my_pkg:"
           ls -al /root/my_ws/src/my_pkg
+          
           echo "Contents of my_ws/src/my_pkg/scripts:"
-          ls -al /root/my_ws/src/my_pkg/scripts
-          ls -al /root/my_ws/src/my_pkg/test
-          chmod +x /root/my_ws/src/my_pkg/test/*.py
           chmod +x /root/my_ws/src/my_pkg/scripts/*.py
+          ls -al /root/my_ws/src/my_pkg/scripts
+          
+          echo "Contents of my_ws/src/my_pkg/test:"
+          chmod +x /root/my_ws/src/my_pkg/test/*.py
+          ls -al /root/my_ws/src/my_pkg/test
         shell: bash          
 
       - name: Run simple python script to check python, docker, and ubuntu versions.
