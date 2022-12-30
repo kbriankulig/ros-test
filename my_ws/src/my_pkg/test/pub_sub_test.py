@@ -35,7 +35,7 @@
 
 ## Talker/listener demo validation
 
-PKG = 'test_pkg'
+PKG = 'my_pkg'
 NAME = 'pub_sub_test'
 
 import sys
