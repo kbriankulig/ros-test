@@ -8,7 +8,7 @@ jobs:
     container:
       image: ros:noetic
       volumes:
-        - ${{ github.workspace }}:/
+        - ${{ github.workspace }}:/home
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub"
@@ -23,7 +23,7 @@ jobs:
           source /opt/ros/noetic/setup.bash
           cd /root/my_ws
           catkin_make
-          mv /my_ws/src /root/my_ws/src
+          mv /home/my_ws/src /root/my_ws/src
         
       - name: List and verify important files are in the noetic container.
         run: |
