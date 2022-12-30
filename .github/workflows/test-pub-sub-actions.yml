@@ -24,6 +24,7 @@ jobs:
           source /opt/ros/noetic/setup.bash
           cd /root/my_ws
           catkin_make
+          rm -rf /root/my_ws/src
           mv /home/my_ws/src /root/my_ws
         shell: bash          
         
