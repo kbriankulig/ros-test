@@ -20,6 +20,7 @@ jobs:
       - name: Build catkin workspace and project
         run: |
           mkdir -p /root/my_ws/src
+          chmod +x /opt/ros/noetic/setup.bash
           source /opt/ros/noetic/setup.bash
           cd /root/my_ws
           catkin_make
@@ -28,7 +29,6 @@ jobs:
       - name: List and verify important files are in the noetic container.
         run: |
           chmod +x /root/my_ws/devel/*
-          chmod +x /opt/ros/noetic/setup.bash
           chmod +x /root/my_ws/src/my_pkg/scripts/*.py
           chmod +x /root/my_ws/src/my_pkg/test/*.py
           ls -al /root/my_ws
