@@ -24,7 +24,7 @@ jobs:
           source /opt/ros/noetic/setup.bash
           cd /root/my_ws
           catkin_make
-          mv /home/my_ws/src /root/my_ws/src
+          mv /home/my_ws/src /root/my_ws
         shell: bash          
         
       - name: List and verify important files are in the noetic container.
