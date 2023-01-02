@@ -2,7 +2,7 @@
 
 # Convenience script
 # Maybe run this script first after spawning a new bash shell.
-#  Usage:
+#  Usage: 
 #          >> source ./new.bash
 
 # Setup ROS env

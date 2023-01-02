@@ -2,7 +2,7 @@
 
 # This script sets up the ROS container for development.
 # This script is meant to be run once after the container is created and the source repo has been copied
-#   over or mounted to the container in /root/my_ws.
+#   over or mounted to the container in /root/my_ws. 
 
 # Setup ROS env
 chmod +x /opt/ros/noetic/setup.bash
