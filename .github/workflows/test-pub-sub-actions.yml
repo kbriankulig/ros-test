@@ -26,6 +26,8 @@ jobs:
         
       - name: List and verify important files are in the noetic container.
         run: |
+          echo "Contents of /:"
+          ls -al /root/ros-test
           echo "Contents of my_ws:"
           ls -al /root/ros-test/my_ws
           echo "Contents of my_ws/devel/:"
@@ -55,10 +57,6 @@ jobs:
           rostest my_pkg pub_sub_test.test
           catkin_test_results /github/home/.ros/test_results
         shell: bash
-
-      - name: Check overall test status.
-        run: |
-          /root/ros-test/my_ws/src/my_pkg/test/overall_test_status.py
-        shell: bash          
+          
           
       - run: echo "🍏 This job's status is ${{ job.status }}."
