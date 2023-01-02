@@ -8,7 +8,7 @@ jobs:
     container:
       image: ros:noetic
       volumes:
-        - ${{ github.workspace }}:/root
+        - ${{ github.workspace }}:/root/ros-test
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub"
@@ -19,7 +19,7 @@ jobs:
         
       - name: Build catkin workspace and project
         run: |
-          cd /root
+          cd /root/ros-test
           chmod +x ./remake_ws.bash
           ./remake_ws.bash
         shell: bash          
@@ -27,20 +27,20 @@ jobs:
       - name: List and verify important files are in the noetic container.
         run: |
           echo "Contents of my_ws:"
-          ls -al /root/my_ws
+          ls -al /root/ros-test/my_ws
           echo "Contents of my_ws/devel/:"
-          chmod +x /root/my_ws/devel/*
-          ls -al /root/my_ws/devel
+          chmod +x /root/ros-test/my_ws/devel/*
+          ls -al /root/ros-test/my_ws/devel
           echo "Contents of my_ws/src/:"
-          ls -al /root/my_ws/src
+          ls -al /root/ros-test/my_ws/src
           echo "Contents of my_ws/src/my_pkg:"
-          ls -al /root/my_ws/src/my_pkg
+          ls -al /root/ros-test/my_ws/src/my_pkg
           echo "Contents of my_ws/src/my_pkg/scripts:"
-          chmod +x /root/my_ws/src/my_pkg/scripts/*.py
-          ls -al /root/my_ws/src/my_pkg/scripts
+          chmod +x /root/ros-test/my_ws/src/my_pkg/scripts/*.py
+          ls -al /root/ros-test/my_ws/src/my_pkg/scripts
           echo "Contents of my_ws/src/my_pkg/test:"
-          chmod +x /root/my_ws/src/my_pkg/test/*.py
-          ls -al /root/my_ws/src/my_pkg/test
+          chmod +x /root/ros-test/my_ws/src/my_pkg/test/*.py
+          ls -al /root/ros-test/my_ws/src/my_pkg/test
         shell: bash          
 
       - name: Run simple python script to check python, docker, and ubuntu versions.
@@ -51,14 +51,14 @@ jobs:
       - name: Run pub_sub_test.
         run: |
           source /opt/ros/noetic/setup.bash
-          source /root/my_ws/devel/setup.bash
+          source /root/ros-test/my_ws/devel/setup.bash
           rostest my_pkg pub_sub_test.test
           catkin_test_results /github/home/.ros/test_results
         shell: bash
 
       - name: Check overall test status.
         run: |
-          /root/my_ws/src/my_pkg/test/overall_test_status.py
+          /root/ros-test/my_ws/src/my_pkg/test/overall_test_status.py
         shell: bash          
           
       - run: echo "🍏 This job's status is ${{ job.status }}."
