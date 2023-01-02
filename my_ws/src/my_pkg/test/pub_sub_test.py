@@ -52,8 +52,8 @@ class TestTalkerListener(unittest.TestCase):
         self.received_talker_data = False
         
     def callback(self, data):
-        print(rospy.get_caller_id(), "heard: %s"%data.data)
-        self.received_talker_data = data.data and data.data.startswith('hello world')
+        print(rospy.get_caller_id(), " TestListener heard: %s"%data.data)
+        self.received_talker_data = (data.data and data.data.startswith('hello world'))
 
     def test_talker_listener(self):
         rospy.init_node(NAME, anonymous=True)
@@ -64,9 +64,9 @@ class TestTalkerListener(unittest.TestCase):
             time.sleep(0.1)
         
         if self.received_talker_data:
-            self.assert_(self.assertTrue)
+            self.assertTrue(True)
         else:
-            self.assert_(self.assertFalse)
+            self.assertTrue(False)
         
 if __name__ == '__main__':
     import rostest
