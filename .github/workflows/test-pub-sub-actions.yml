@@ -47,7 +47,7 @@ jobs:
 
       - name: Run simple python script to check python, docker, and ubuntu versions.
         run: |
-          ./list_sw_version_info.py
+          /root/ros-test/my_ws/src/my_pkg/test//list_sw_version_info.py
         shell: bash          
 
       - name: Run pub_sub_test.
