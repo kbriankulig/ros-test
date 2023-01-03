@@ -1,0 +1,24 @@
+// VS Code configuration for ROS Noetic development container.
+// Source tree is mounted to CONTAINER:/root/ros-test
+{
+	"name": "VSCodeROSDev",
+    "dockerFile": "Dockerfile",
+    "extensions": [
+        "ms-python.python",
+        "ms-vscode.cpptools",
+		"ms-iot.vscode-ros"
+    ],	
+
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+    },
+
+    "mounts": [
+      "source=${localWorkspaceFolder},dst=/root/ros-test,type=bind,consistency=cached"
+    ]
+    "workspaceFolder": "/root/ros-test"
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "./remake_ws.bash"
+
+}
