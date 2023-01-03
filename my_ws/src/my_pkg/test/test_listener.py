@@ -29,9 +29,13 @@ class TestListener(unittest.TestCase):
         
 if __name__ == '__main__':
     import rosunit
+    import os
     import sys
-    sys.path.append("..")  # Include all the python packages/folders in the root of the catkin package
+
+    file_path, file_name = os.path.split(__file__)
+    package_root = os.path.join(file_path, "..")
+    sys.path.append(package_root)  # Include all the python packages/folders in the root of the catkin package
     
-    from scripts import listener as l   
+    from scripts import listener as l
     
     rosunit.unitrun(PKG, NAME, TestListener, sys.argv)
