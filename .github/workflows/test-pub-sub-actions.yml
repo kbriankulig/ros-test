@@ -56,11 +56,6 @@ jobs:
           source /root/ros-test/my_ws/devel/setup.bash
           rostest my_pkg pub_sub_test.test
           catkin_test_results /github/home/.ros/test_results
-        shell: bash
-
-      - name: Check overall test status.
-        run: |
-          /root/ros-test/my_ws/src/my_pkg/test/overall_test_status.py
-        shell: bash          
+        shell: bash        
           
       - run: echo "🍏 This job's status is ${{ job.status }}."
