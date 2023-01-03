@@ -58,9 +58,9 @@ jobs:
           catkin_test_results /github/home/.ros/test_results
         shell: bash
 
-      - name: Check overall test status.
+      - name: Run unit tests.
         run: |
-          /root/ros-test/my_ws/src/my_pkg/test/overall_test_status.py
+          /root/ros-test/my_ws/src/my_pkg/test/test_listener.py
         shell: bash          
           
       - run: echo "🍏 This job's status is ${{ job.status }}."

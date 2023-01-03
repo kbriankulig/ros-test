@@ -43,22 +43,22 @@ from std_msgs.msg import String
 def callback(data):
     rospy.loginfo(rospy.get_caller_id() + ' Listener heard: %s', data.data)
 
-def listener():
+def listen(wait_time=100):
+    """ wait_time is the amount of time to wait in deciseconds before stopping. """
+    while wait_time > 0:
+        time.sleep(0.1)
+        wait_time = wait_time - 1 
 
+def listener():
     # In ROS, nodes are uniquely named. If two nodes with the same
     # name are launched, the previous one is kicked off. The
     # anonymous=True flag means that rospy will choose a unique
     # name for our 'listener' node so that multiple listeners can
     # run simultaneously.
     rospy.init_node('listener', anonymous=True)
-
     rospy.Subscriber('chatter', String, callback)
-
-    countdown_10sec = 100
-    while countdown_10sec > 0:
-        time.sleep(0.1)
-        countdown_10sec = countdown_10sec - 1    
-    
+    listen()
+   
     # spin() simply keeps python from exiting until this node is stopped
     #rospy.spin()
 
