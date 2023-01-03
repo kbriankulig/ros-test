@@ -18,7 +18,7 @@
     ]
     "workspaceFolder": "/root/ros-test"
 
-    // Use 'postCreateCommand' to run commands after the container is created.
+    // Build/rebuild the catkin workspace.  Creates the catkin build and devel folders if they are not present.
     "postCreateCommand": "./remake_ws.bash"
 
 }
